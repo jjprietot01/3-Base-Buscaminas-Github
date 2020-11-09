@@ -1,5 +1,4 @@
-BASE PARA EL BUSCAMINAS: (Nombre alumno)
-=========================
+# BASE PARA EL BUSCAMINAS: Juan José Prieto Talavero
 
 En este programa se encuentra la base para el Buscaminas de Desarrollo de intefaces (DAM2).
 
