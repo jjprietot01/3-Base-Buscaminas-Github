@@ -15,31 +15,31 @@ import javax.swing.SwingConstants;
 
 /**
  * Ventana principal del Buscaminas
- * @author {Rellenar por el alumno}
+ * @author Juan José Prieto Talavero
  */
 public class VentanaPrincipal {
 
 	//La ventana principal, en este caso, guarda todos los componentes:
-	JFrame ventana;
-	JPanel panelImagen;
-	JPanel panelEmpezar;
-	JPanel panelPuntuacion;
-	JPanel panelJuego;
+	private JFrame ventana;
+	private JPanel panelImagen;
+	private JPanel panelEmpezar;
+	private JPanel panelPuntuacion;
+	private JPanel panelJuego;
 	
 	//Todos los botones se meten en un panel independiente.
 	//Hacemos esto para que podamos cambiar después los componentes por otros
-	JPanel [][] panelesJuego;
-	JButton [][] botonesJuego;
+	private JPanel [][] panelesJuego;
+	private JButton [][] botonesJuego;
 	
 	//Correspondencia de colores para las minas:
-	Color correspondenciaColores [] = {Color.BLACK, Color.CYAN, Color.GREEN, Color.ORANGE, Color.RED, Color.RED, Color.RED, Color.RED, Color.RED, Color.RED};
+	private Color correspondenciaColores [] = {Color.BLACK, Color.CYAN, Color.GREEN, Color.ORANGE, Color.RED, Color.RED, Color.RED, Color.RED, Color.RED, Color.RED};
 	
-	JButton botonEmpezar;
-	JTextField pantallaPuntuacion;
+	private JButton botonEmpezar;
+	private JTextField pantallaPuntuacion;
 	
 	
 	//LA VENTANA GUARDA UN CONTROL DE JUEGO:
-	ControlJuego juego;
+	private ControlJuego juego;
 	
 	
 	//Constructor, marca el tamaño y el cierre del frame
@@ -143,6 +143,14 @@ public class VentanaPrincipal {
 	 */
 	public void inicializarListeners(){
 		//TODO
+
+		//Dar listener a los botones para que se abran las casillas
+
+		for(int i=0; i<botonesJuego.length; i++){
+			for(int j=0; j<botonesJuego.length; j++){
+				botonesJuego[i][j].addActionListener(new ActionBoton(this, i , j));
+			}
+		}
 	}
 	
 	
@@ -160,6 +168,22 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarNumMinasAlrededor(int i , int j) {
 		//TODO
+		//Selecionar el panel[][] correspondiente
+		//Eliminar todos sus componentes
+		//Añadir un JLabel
+		//El numero de minas se saca de ControlJuego() con getMinasAlrededor()
+
+		JLabel jLabel = new JLabel();
+
+		panelesJuego[i][j].removeAll();
+		
+		jLabel.setText(Integer.toString(juego.getMinasAlrededor(i, j)));
+		jLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		jLabel.setForeground(correspondenciaColores[juego.getMinasAlrededor(i, j)]);
+
+		panelesJuego[i][j].add(jLabel);
+		
+		refrescarPantalla();
 	}
 	
 	

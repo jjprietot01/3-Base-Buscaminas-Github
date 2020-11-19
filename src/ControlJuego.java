@@ -7,7 +7,7 @@ import java.util.Random;
  * Si hay una mina en una posición guarda el número -1
  * Si no hay una mina, se guarda cuántas minas hay alrededor.
  * Almacena la puntuación de la partida
- * @author jesusredondogarcia
+ * @author Juan José Prieto Talavero
  *
  */
 public class ControlJuego {
@@ -86,7 +86,27 @@ public class ControlJuego {
 	 * @return : El número de minas que hay alrededor de la casilla [i][j]
 	 **/
 	private int calculoMinasAdjuntas(int i, int j){
-		return 0;
+		//int iInicial = i-1;
+		//int iFinal = i+1;
+		int iInicial = Math.max(0, i-1);
+		int iFinal = Math.min(LADO_TABLERO-1, i+1);
+
+		//int jInicial = j-1;
+		//int jFinal = j+1;
+		int jInicial = Math.max(0, j-1);
+		int jFinal = Math.min(LADO_TABLERO-1, j+1);
+		
+		int contMinas=0;
+
+		for(int vertical = iInicial; vertical <= iFinal; vertical++){
+			for(int horizontal = jInicial; horizontal <= jFinal; horizontal++){
+				if(tablero[vertical][horizontal] == MINA){
+					contMinas++;
+				}
+			}
+		}
+
+		return contMinas;
 	}
 	
 	/**
@@ -97,7 +117,11 @@ public class ControlJuego {
 	 * @return : Verdadero si no ha explotado una mina. Falso en caso contrario.
 	 */
 	public boolean abrirCasilla(int i, int j){
-		return false;
+		if(tablero[i][j]==MINA){
+			return false;
+		}
+		puntuacion++;
+		return true;
 	}
 	
 	
@@ -133,7 +157,7 @@ public class ControlJuego {
 	 * @return Un entero que representa el número de minas alrededor de la celda
 	 */
 	public int getMinasAlrededor(int i, int j) {
-		return 0;
+		return tablero[i][j];
 	}
 
 	/**

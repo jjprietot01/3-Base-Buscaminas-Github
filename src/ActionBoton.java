@@ -6,15 +6,20 @@ import java.awt.event.ActionListener;
  * De alguna manera tendrá que poder acceder a la ventana principal.
  * Se puede lograr pasando en el constructor la referencia a la ventana.
  * Recuerda que desde la ventana, se puede acceder a la variable de tipo ControlJuego
- * @author jesusredondogarcia
+ * @author Juan José Prieto Talavero
  **
  */
 public class ActionBoton implements ActionListener{
 
-	
+	private VentanaPrincipal ventana;
+	private int i;
+	private int j;
 
-	public ActionBoton() {
+	public ActionBoton(VentanaPrincipal ventana, int i, int j) {
 		//TODO
+		this.ventana=ventana;
+		this.i=i;
+		this.j=j;
 	}
 	
 	/**
@@ -23,6 +28,9 @@ public class ActionBoton implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		//TODO
+		if(ventana.getJuego().abrirCasilla(i, j)){
+
+		}
 	}
 
 }
