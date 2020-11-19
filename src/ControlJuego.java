@@ -131,6 +131,9 @@ public class ControlJuego {
 	 * @return Devuelve verdadero si se han abierto todas las celdas que no son minas.
 	 **/
 	public boolean esFinJuego(){
+		if(puntuacion==80){//Corregir limites con lado tablero + lado tablero - minas iniciales
+			return true;
+		}
 		return false;
 	}
 	
@@ -165,7 +168,7 @@ public class ControlJuego {
 	 * @return Un entero con la puntuación actual
 	 */
 	public int getPuntuacion() {
-		return 0;
+		return puntuacion;
 	}
 	
 }

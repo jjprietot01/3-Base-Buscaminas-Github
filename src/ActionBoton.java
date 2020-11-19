@@ -29,7 +29,15 @@ public class ActionBoton implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		//TODO
 		if(ventana.getJuego().abrirCasilla(i, j)){
-
+			ventana.mostrarNumMinasAlrededor(i, j);
+		}
+		else{
+			ventana.mostrarFinJuego(ventana.getJuego().esFinJuego());
+			for(int i = 0; i<ventana.getJuego().LADO_TABLERO; i++){
+				for(int j = 0; j<ventana.getJuego().LADO_TABLERO; j++){
+					ventana.getBotonesJuego()[i][j].setEnabled(false);
+				}
+			}
 		}
 	}
 

@@ -143,7 +143,21 @@ public class VentanaPrincipal {
 	 */
 	public void inicializarListeners(){
 		//TODO
-
+		botonEmpezar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ventana.removeAll();
+                inicializar();
+                /*for (int i = 0; i < juego.LADO_TABLERO; i++) {
+                    for (int j = 0; j < juego.LADO_TABLERO; j++) {
+                        botonesJuego[i][j].setEnabled(true);
+                    }
+                }*/
+                getJuego().inicializarPartida();
+                getJuego().depurarTablero();
+                refrescarPantalla();
+            }
+       });
 		//Dar listener a los botones para que se abran las casillas
 
 		for(int i=0; i<botonesJuego.length; i++){
@@ -194,6 +208,11 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
 		//TODO
+		if(!porExplosion){
+            JOptionPane.showMessageDialog(null, "Has explotado una mina\n Puntuacion: "+getJuego().getPuntuacion());
+        }else{
+            JOptionPane.showMessageDialog(null, "Has desactivado todas las casillas¡¡¡\n Puntuacion: "+getJuego().getPuntuacion());
+        }
 	}
 
 	/**
@@ -201,12 +220,14 @@ public class VentanaPrincipal {
 	 */
 	public void actualizarPuntuacion() {
 		//TODO
+		pantallaPuntuacion.setText(Integer.toString(getJuego().getPuntuacion()));
 	}
 	
 	/**
 	 * Método para refrescar la pantalla
 	 */
 	public void refrescarPantalla(){
+		actualizarPuntuacion();
 		ventana.revalidate(); 
 		ventana.repaint();
 	}
@@ -229,6 +250,14 @@ public class VentanaPrincipal {
 		inicializarListeners();		
 	}
 
+
+	public JButton[][] getBotonesJuego() {
+		return this.botonesJuego;
+	}
+
+	public void setBotonesJuego(JButton[][] botonesJuego) {
+		this.botonesJuego = botonesJuego;
+	}
 
 
 }
