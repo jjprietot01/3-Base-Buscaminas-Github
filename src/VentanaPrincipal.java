@@ -146,15 +146,16 @@ public class VentanaPrincipal {
 		botonEmpezar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ventana.removeAll();
-                inicializar();
-                /*for (int i = 0; i < juego.LADO_TABLERO; i++) {
+                for (int i = 0; i < juego.LADO_TABLERO; i++) {
                     for (int j = 0; j < juego.LADO_TABLERO; j++) {
-                        botonesJuego[i][j].setEnabled(true);
+						panelesJuego[i][j].removeAll();
                     }
-                }*/
-                getJuego().inicializarPartida();
-                getJuego().depurarTablero();
+				}
+				
+				reiniciar();
+				
+                juego.inicializarPartida();
+                juego.depurarTablero();
                 refrescarPantalla();
             }
        });
@@ -208,10 +209,10 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
 		//TODO
-		if(!porExplosion){
-            JOptionPane.showMessageDialog(null, "Has explotado una mina\n Puntuacion: "+getJuego().getPuntuacion());
+		if(porExplosion){
+            JOptionPane.showMessageDialog(ventana, "Has explotado una mina\n Puntuacion: "+getJuego().getPuntuacion());
         }else{
-            JOptionPane.showMessageDialog(null, "Has desactivado todas las casillas¡¡¡\n Puntuacion: "+getJuego().getPuntuacion());
+            JOptionPane.showMessageDialog(ventana, "Has desactivado todas las casillas¡¡¡\n Puntuacion: "+getJuego().getPuntuacion());
         }
 	}
 
@@ -259,5 +260,20 @@ public class VentanaPrincipal {
 		this.botonesJuego = botonesJuego;
 	}
 
+	public void reiniciar(){
+		botonesJuego = new JButton[10][10];
+		for (int i = 0; i < botonesJuego.length; i++) {
+			for (int j = 0; j < botonesJuego[i].length; j++) {
+				botonesJuego[i][j] = new JButton("-");
+				panelesJuego[i][j].add(botonesJuego[i][j]);
+			}
+		}
+
+		for(int i=0; i<botonesJuego.length; i++){
+			for(int j=0; j<botonesJuego.length; j++){
+				botonesJuego[i][j].addActionListener(new ActionBoton(this, i , j));
+			}
+		}
+	}
 
 }
