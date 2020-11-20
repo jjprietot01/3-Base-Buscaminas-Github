@@ -209,10 +209,17 @@ public class VentanaPrincipal {
 	 */
 	public void mostrarFinJuego(boolean porExplosion) {
 		//TODO
+
+		for (int i = 0; i < getJuego().LADO_TABLERO; i++) {
+			for (int j = 0; j < getJuego().LADO_TABLERO; j++) {
+				getBotonesJuego()[i][j].setEnabled(false);
+			}
+		}
+
 		if(porExplosion){
             JOptionPane.showMessageDialog(ventana, "Has explotado una mina\n Puntuacion: "+getJuego().getPuntuacion());
         }else{
-            JOptionPane.showMessageDialog(ventana, "Has desactivado todas las casillas¡¡¡\n Puntuacion: "+getJuego().getPuntuacion());
+            JOptionPane.showMessageDialog(ventana, "Has desactivado todas las casillas!!!\n Puntuacion: "+getJuego().getPuntuacion());
         }
 	}
 

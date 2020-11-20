@@ -15,7 +15,6 @@ public class ActionBoton implements ActionListener {
 	private VentanaPrincipal ventana;
 	private int i;
 	private int j;
-	private boolean bomba;
 
 	public ActionBoton(VentanaPrincipal ventana, int i, int j) {
 		// TODO
@@ -30,35 +29,13 @@ public class ActionBoton implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO
-		/*if(ventana.getJuego().abrirCasilla(i, j)){
-			ventana.mostrarNumMinasAlrededor(i, j);
-		}
-		else{
-			ventana.mostrarFinJuego(ventana.getJuego().esFinJuego());
-			for(int i = 0; i<ventana.getJuego().LADO_TABLERO; i++){
-				for(int j = 0; j<ventana.getJuego().LADO_TABLERO; j++){
-					ventana.getBotonesJuego()[i][j].setEnabled(false);
-				}
+		if(ventana.getJuego().abrirCasilla(i, j)){
+			ventana.mostrarNumMinasAlrededor(i, j);	
+			if(ventana.getJuego().esFinJuego()){
+				ventana.mostrarFinJuego(false);
 			}
-		}*/
-
-
-		if (!ventana.getJuego().esFinJuego()) {
-			if (ventana.getJuego().abrirCasilla(i, j)) {
-				ventana.mostrarNumMinasAlrededor(i, j);
-				bomba=false;
-			} else {
-				//ventana.mostrarFinJuego(ventana.getJuego().esFinJuego());
-				bomba=true;
-				for (int i = 0; i < ventana.getJuego().LADO_TABLERO; i++) {
-					for (int j = 0; j < ventana.getJuego().LADO_TABLERO; j++) {
-						ventana.getBotonesJuego()[i][j].setEnabled(false);
-					}
-				}
-			}
-		}
-		else{
-			ventana.mostrarFinJuego(bomba);
+		}else{
+			ventana.mostrarFinJuego(true);			
 		}
 	}
 
