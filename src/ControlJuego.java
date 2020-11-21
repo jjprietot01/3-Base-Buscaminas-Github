@@ -1,6 +1,3 @@
-import java.util.ArrayList;
-import java.util.Random;
-
 /**
  * Clase gestora del tablero de juego.
  * Guarda una matriz de enteros representado el tablero.
@@ -8,6 +5,7 @@ import java.util.Random;
  * Si no hay una mina, se guarda cuántas minas hay alrededor.
  * Almacena la puntuación de la partida
  * @author Juan José Prieto Talavero
+ * @version v1.0
  *
  */
 public class ControlJuego {
@@ -18,7 +16,9 @@ public class ControlJuego {
 	private int [][] tablero;
 	private int puntuacion;
 	
-	
+	/**
+	 * Constructor de ControlJuego
+	 */
 	public ControlJuego() {
 		//Creamos el tablero:
 		tablero = new int[LADO_TABLERO][LADO_TABLERO];
@@ -131,7 +131,7 @@ public class ControlJuego {
 	 * @return Devuelve verdadero si se han abierto todas las celdas que no son minas.
 	 **/
 	public boolean esFinJuego(){
-		if(((LADO_TABLERO*LADO_TABLERO)-MINAS_INICIALES)==puntuacion){//Corregir limites con lado tablero * lado tablero - minas iniciales
+		if(((LADO_TABLERO*LADO_TABLERO)-MINAS_INICIALES)==puntuacion){
 			return true;
 		}
 		return false;

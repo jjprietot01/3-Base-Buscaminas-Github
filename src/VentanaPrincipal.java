@@ -14,8 +14,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 /**
- * Ventana principal del Buscaminas
+ * Ventana principal del Buscaminas.
+ * En ella se creara e inicializara todo lo necesario para que podamos jugar la partida.
+ * Una vez finalizada la partida mostrara mensaje y podras decidir si juagr de nuevo o no.
+ * 
  * @author Juan José Prieto Talavero
+ * @version v1.0
+ * @see (ControlJuego.java) metodo que inicia todo {@link ControlJuego}
  */
 public class VentanaPrincipal {
 
@@ -42,7 +47,10 @@ public class VentanaPrincipal {
 	private ControlJuego juego;
 	
 	
-	//Constructor, marca el tamaño y el cierre del frame
+	/**
+	 * Constructor de VentanaPrincipal, marca el tamaño y el cierre del frame
+	 * 
+	 */
 	public VentanaPrincipal() {
 		ventana = new JFrame();
 		ventana.setBounds(100, 100, 700, 500);
@@ -143,6 +151,11 @@ public class VentanaPrincipal {
 	 */
 	public void inicializarListeners(){
 		//TODO
+		//Dar listener a los botones para que se abran las casillas
+
+		/**
+		 * Listener del botonEmpezar
+		 */
 		botonEmpezar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,7 +172,7 @@ public class VentanaPrincipal {
                 refrescarPantalla();
             }
        });
-		//Dar listener a los botones para que se abran las casillas
+		
 
 		for(int i=0; i<botonesJuego.length; i++){
 			for(int j=0; j<botonesJuego.length; j++){
@@ -258,15 +271,17 @@ public class VentanaPrincipal {
 		inicializarListeners();		
 	}
 
-
+	/**
+	 * Metodo getter de los botones de juego
+	 * @return los botones del juego
+	 */
 	public JButton[][] getBotonesJuego() {
 		return this.botonesJuego;
 	}
 
-	public void setBotonesJuego(JButton[][] botonesJuego) {
-		this.botonesJuego = botonesJuego;
-	}
-
+	/**
+	 * Metodo encargado de reiniciar los botones del juego y sus listener
+	 */
 	public void reiniciar(){
 		botonesJuego = new JButton[10][10];
 		for (int i = 0; i < botonesJuego.length; i++) {

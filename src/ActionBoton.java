@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
  * ventana, se puede acceder a la variable de tipo ControlJuego
  * 
  * @author Juan José Prieto Talavero
- **
+ * @version v1.0
  */
 public class ActionBoton implements ActionListener {
 
@@ -16,6 +16,12 @@ public class ActionBoton implements ActionListener {
 	private int i;
 	private int j;
 
+	/**
+	 * Constructor parametrizado
+	 * @param ventana: ventana de juego
+	 * @param i: posición vertical de la celda.
+	 * @param j: posición horizontal de la celda.
+	 */
 	public ActionBoton(VentanaPrincipal ventana, int i, int j) {
 		// TODO
 		this.ventana = ventana;
