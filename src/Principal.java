@@ -1,5 +1,7 @@
 import java.awt.EventQueue;
 
+//Comentario para poder hacer el commit de entrega final
+
 /**
  * Clase principal del Buscaminas
  * @author Juan José Prieto Talavero
