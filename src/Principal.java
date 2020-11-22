@@ -1,6 +1,6 @@
 import java.awt.EventQueue;
 
-//Comentario para poder hacer el commit de entrega final 3er try
+//Comentario para poder hacer el commit de entrega final
 
 /**
  * Clase principal del Buscaminas
